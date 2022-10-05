@@ -37,7 +37,88 @@ function Login(){
 }
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
+2.	Refactor the previous assignment to include the following: 
+a.	When the user presses the tab key in each textbox, perform the check as mentioned above. 
+b.	Write JS code to validate each key inputted in each textbox and display an error message beneath each textbox if a space character is detected in username or password. 
+c.	As long as the username and password textboxes are empty, disable the button. The button must be enabled only when both textboxes contain text
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="usrname">UserName:</label>
+    <input type="text" name="usrname" id="usrname">
+    <h2 id="invalidMessage"></h2>
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password">
+    <h2 id="invalidMessage1"></h2>
+
+    <input type="submit" value="Sign In" id="button" disabled onclick="loginButton()">
+    <script src="assignment3(2).js"></script>
+
+</body>
+</html>
+
+document.getElementById('usrname').addEventListener('click',function(){
+ let usrname=document.getElementById('usrname').value;
+ let invalidMessage=document.getElementById('invalidMessage');
+ for(let i=0;i<usrname.length;i++){
+    if(usrname.charAt(i)=="" || usrname.toLowerCase()!="citiustech"){
+        invalidMessage.innerHTML="invalid credentials";
+
+    }
+    else{
+        invalidMessage.innerHTML="";
+    }
+ }
+
+})
+document.getElementById('password').addEventListener('click',function(){
+    let password=document.getElementById('password').value;
+    let invalidMessage1=document.getElementById('invalidMessage1');
+    for(let i=0;i<password.length;i++){
+       if(password.charAt(i)==""|| password.toLowerCase()!="citiustech"){
+           invalidMessage1.innerHTML="invalid credentials";
+   
+       }
+       else{
+           invalidMessage1.innerHTML="";
+       }
+    }
+   
+   })
+
+   document.getElementById('usrname').addEventListener('focusout',function(){
+    let usrname=document.getElementById('usrname').value;
+    if(usrname.length>2){
+        document.getElementById('button').disabled=false;
+    }
+   })
+
+   function loginButton(){
+   t Uname=document.getElementById('usrname').value;
+    let Pssword=document.getElementById('password').value;
+    let invalidMessage=document.getElementById('invalidMessage');
+    let invalidMessage1=document.getElementById('invalidMessage1');
+    if(Uname.toLowerCase()=="citiustech"&& Pssword.toLowerCase()=="citiustech")
+    {
+        window.open('https://www.google.co.in/')
+
+    }
+    else
+    {
+        invalidMessage.innerHTML="invalid credentials"
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 3) Create an HTML5 page which contains a textbox. The user will enter an email id in the textbox. Next to the textbox, put a button titled Add Another Email. When the button is clicked, write JS code to add another textbox and a button next to it titled Remove Email. When the button is clicked, the button and the textbox should be removed
 
 <!DOCTYPE html>
@@ -73,6 +154,85 @@ function addEmailButton(){
 }
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
+4.	Create an HTML5 page which displays a dropdown list. The drop down list must contain the following data: 
+India 
+Australia 
+New Zealand 
+England 
+When the user selects a country name, write JS code to display the list of cities in another dropdown list. 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="myCountryname">Country:</label>
+        <select name="countryName" id="myCountryname">
+            <option value="select">Select Country</option>
+            <option value="India">India</option>
+            <option value="Australia">Australia</option>
+            <option value="Newzealand">Newzealand</option>
+            <option value="England">England</option>
+        </select>
+        <br>
+        <br>
+
+        <select name="indiaName" id="indiaCountry" style="display:none;">
+            <option value="select city">Select city</option>
+            <option value="bengluru">Bengluru</option>
+            <option value="mumbai">mumbai</option>
+            <option value="pune">pune</option>
+            <option value="jaipur">jaipur</option>
+            <option value="hyderabad">hyderabad</option>
+        </select>
+
+        <select name="australiaName" id="australiaCountry" style="display:none;">
+            <option value="select city">Select city</option>
+            <option value="Sydney">Sydney</option>
+            <option value="melbourne">melbourne</option>
+            <option value="canberra">canberra</option>
+            <option value="perth">perth</option>
+        </select>
+
+        <select name="englandName" id="englandCountry" style="display:none;">
+            <option value="select city">Select city</option>
+            <option value="London">London</option>
+            <option value="oxford">oxford</option>
+            <option value="manchester">manchester</option>
+            <option value="Liverpool">Liverpool</option>
+        </select>
+        <select name="newzealandName" id="newzealandCountry" style="display:none;">
+            <option value="select city">Select city</option>
+            <option value="wellington">wellington</option>
+            <option value="hamilton">hamilton</option>
+            <option value="auckland">auckland</option>
+            <option value="waiheke">waiheke</option>
+        </select>
+    </form>
+    <script src="assignment3(4).js"></script>
+</body>
+
+</html>
+
+document.querySelector("#img").addEventListener("mouseover",function()
+{
+    document.querySelector("#img").style.width="800px";
+    document.querySelector('#img').style.height="800px";
+}),
+document.querySelector("#img").addEventListener("mouseleave",function()
+{
+    document.querySelector("#img").style.width="200px";
+    document.querySelector('#img').style.height="200px";
+});
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 5) Create an HTML5 page which displays an image with the size 200x200 pixels. When the mouse is hovered on the image, the image must zoom to 800x800 pixels. When the mouse is moved out of the image, the image must zoom out to 200x200 pixels
 
@@ -98,3 +258,6 @@ document.querySelector('#image').addEventListener('mouseout',function(){
     document.getElementById('image').height="200";
     document.getElementById('image').weight="200";
 });
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
